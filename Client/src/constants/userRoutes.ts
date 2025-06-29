@@ -1,0 +1,15 @@
+export const USER_ROUTES = {
+  REGISTER: "/register",
+  LOGIN: "/login",
+  GOOGLE_LOGIN: "/auth/google/token",
+  PROFILE: "/profile",
+  SETTINGS: "/settings",
+  UPLOAD_PROFILE_IMAGE: "/upload-profile-image",
+  FORGOT_PASSWORD: "/forgot-password",
+  VERIFY_OTP: "/verify-password-reset-otp",
+  RESET_PASSWORD: "/reset-password",
+  CHECK_STATUS: "/check-status",
+  ENROLLED_COURSES: "/enrolled-courses",
+  ENROLLMENT_STATUS: (courseId: string) => `/enrollment/status/${courseId}`,
+  CHANGE_PASSWORD: "/change-password",
+};
