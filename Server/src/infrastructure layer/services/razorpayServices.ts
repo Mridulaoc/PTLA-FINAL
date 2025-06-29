@@ -1,10 +1,6 @@
 import Razorpay from "razorpay";
 import crypto from "crypto";
-
-export const instance = new Razorpay({
-  key_id: process.env.RAZORPAY_API_KEY,
-  key_secret: process.env.RAZORPAY_API_SECRET,
-});
+import { instance } from "../../config/razorpayConfig";
 
 type FetchPaymentReturnType = Awaited<
   ReturnType<typeof instance.payments.fetch>

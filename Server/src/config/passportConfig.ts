@@ -1,7 +1,7 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy, Profile } from "passport-google-oauth20";
-import { UserRepository } from "../domain/repositories/userRepository";
 import { GoogleAuthUseCase } from "../domain/usecases/googleAuthUseCase";
+import { UserRepository } from "../infrastructure layer/database/repositories/userRepo";
 
 const userRepository: UserRepository = new UserRepository();
 

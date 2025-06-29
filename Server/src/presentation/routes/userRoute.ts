@@ -14,7 +14,7 @@ import { CheckUserStatusUseCase } from "../../application/use-cases/user/checkUs
 import { GetEnrollmentStatusUseCase } from "../../application/use-cases/userEnrollment/getEnrollmentStatusUseCase";
 import { ChangePasswordUseCase } from "../../application/use-cases/profile/changePasswordUseCase";
 import { authMiddleware } from "../../infrastructure layer/middleware/authMiddleware";
-import { checkBlocked } from "../../infrastructure layer/middleware/checkBlocked";
+import { checkBlocked } from "../../infrastructure layer/middleware/checkBlockedMiddleware";
 
 const userRouter = express.Router();
 
