@@ -1,6 +1,4 @@
 import { IUser } from "../../../domain layer/entities/User";
-import { BundleModel } from "../../../infrastructure layer/database/models/courseBundleModel";
-import { UserModel } from "../../../infrastructure layer/database/models/userModel";
 import { ICourseBundleRepository } from "../../../infrastructure layer/database/repositories/courseBundleRepo";
 import { IOrderRepository } from "../../../infrastructure layer/database/repositories/orderRepo";
 import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";

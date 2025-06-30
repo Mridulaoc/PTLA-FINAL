@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { NotificationRepository } from "../../domain/repositories/notificationRepository";
 import { IUser } from "../../domain/entities/User";
 import { notificationNamespace } from "../../app";
 import { GetUserNotificationsUseCase } from "../../application/use-cases/userNotification/getUserNotificationsUseCase";

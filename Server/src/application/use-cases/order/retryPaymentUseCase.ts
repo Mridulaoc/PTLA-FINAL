@@ -32,7 +32,7 @@ export class RetryPaymentUseCase {
     order.status = "Pending";
     order.updatedAt = new Date();
 
-    await order.save();
+    await this.orderRepo.updateOrder(order);
 
     return {
       orderId: newRazorpayOrder.id,

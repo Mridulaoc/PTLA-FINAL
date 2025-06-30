@@ -1,13 +1,5 @@
 import { INotificationRepository } from "../../../infrastructure layer/database/repositories/notificationRepo";
 
-export interface INotificationSocketService {
-  sendNotificationToUsers(
-    namespace: any,
-    userIds: string[],
-    notificationId: string
-  ): void;
-}
-
 export interface MarkNotificationAsReadInput {
   notificationId: string;
   userId: string;
@@ -19,10 +11,7 @@ export interface MarkNotificationAsReadResponse {
 }
 
 export class MarkNotificationAsReadUseCase {
-  constructor(
-    private notificationRepo: INotificationRepository,
-    private socketService: INotificationSocketService
-  ) {}
+  constructor(private notificationRepo: INotificationRepository) {}
 
   async execute(
     input: MarkNotificationAsReadInput

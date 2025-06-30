@@ -14,7 +14,7 @@ interface RequestWithAdmin extends Request {
   admin?: IAdmin;
 }
 
-export class chatController {
+export class ChatController {
   constructor(
     private getAdminChatsUseCase: GetAdminChatsUseCase,
     private getChatUseCase: GetChatUseCase,

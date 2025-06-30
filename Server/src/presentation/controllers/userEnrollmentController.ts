@@ -7,7 +7,7 @@ import { UpdateLessonProgressUseCase } from "../../application/use-cases/userEnr
 import { FetchLessonProgressUseCase } from "../../application/use-cases/userEnrollment/fetchLessonProgressUseCase";
 import { CertificateCreationUseCase } from "../../application/use-cases/userEnrollment/certificateGenerationUseCase";
 
-export class UserEnrollment {
+export class UserEnrollmentController {
   constructor(
     private getEnrollmentStatusUseCase: GetEnrollmentStatusUseCase,
     private updateLessonProgressUseCase: UpdateLessonProgressUseCase,

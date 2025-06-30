@@ -11,8 +11,6 @@ export class HandleEnrollmentAfterPaymentUseCase {
     private enrollUserUseCase: EnrollUserUsecase,
     private timeLimitedBundleUseCase: TimeLimitedBundleEnrollmentUseCase,
     private permanentBundleUseCase: PermanentBundleEnrollmentUseCase,
-    private userRepo: IUserRepository,
-    private courseRepo: ICourseRepository,
     private bundleRepo: ICourseBundleRepository
   ) {}
 

@@ -9,11 +9,6 @@ import { LoginUseCase } from "../../application/use-cases/user/loginUseCase";
 import { IGoogleProfile, IUser } from "../../domain layer/entities/User";
 import { GoogleAuthUseCase } from "../../application/use-cases/user/googleAuthUseCase";
 import { CheckUserStatusUseCase } from "../../application/use-cases/user/checkUserStatusUseCase";
-import { GetEnrollmentStatusUseCase } from "../../application/use-cases/userEnrollment/getEnrollmentStatusUseCase";
-import {
-  ChangePasswordUseCase,
-  IChangePasswordInputs,
-} from "../../application/use-cases/profile/changePasswordUseCase";
 import { HttpStatus } from "../constants/HttpStatus";
 import { ResponseMessages } from "../constants/ResponseMessages";
 import { ForgotPasswordUseCase } from "../../application/use-cases/user/forgotPasswordUseCase";
