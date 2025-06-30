@@ -1,7 +1,7 @@
 import express, { Express } from "express";
 import bodyParser from "body-parser";
 import cors, { CorsOptions } from "cors";
-import { connectDatabase } from "./infrastructure/database/connection";
+import { connectDatabase } from "./infrastructure layer/database/db";
 import dotenv from "dotenv";
 dotenv.config();
 import passport from "passport";
@@ -9,12 +9,9 @@ import path from "path";
 import morgan from "morgan";
 import { Server, Socket } from "socket.io";
 import http from "http";
-import { RoomHandler } from "./infrastructure/services/socketService/roomService";
 import { chatHandler } from "./infrastructure/services/socketService/chatHandler";
-import jwt from "jsonwebtoken";
-// import { startExpirationCron } from "./infrastructure/cron/expirationCron";
-import { socketAuthMiddleware } from "./app/middlewares/socketMiddleware";
-import { SocketAddress } from "net";
+import { startExpirationCron } from "./infrastructure layer/services/Cron/expirationCron";
+import { socketAuthMiddleware } from "./infrastructure layer/middleware/socketMiddleware";
 import { notificationHandler } from "./infrastructure/services/socketService/notificationHandler";
 import { webRTCHandler } from "./infrastructure/services/socketService/webrtcHandler";
 import { startBundleExpiryNotificationCron } from "./infrastructure/cron/bundleExpiryNotificationCron";
@@ -152,7 +149,7 @@ webRTCNamespace.on("connection", (socket) => {
 });
 
 connectDatabase();
-// startExpirationCron();
+startExpirationCron();
 startBundleExpiryNotificationCron();
 export { io };
 export { server };
