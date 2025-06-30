@@ -1,4 +1,4 @@
-import { IOrderRepository } from "../../../infrastructure layer/database/repositories/orderRepo";
+import { IOrderRepository } from "../../../infrastructure/database/repositories/orderRepo";
 
 export class ConfirmPaymentUseCase {
   constructor(private orderRepository: IOrderRepository) {}

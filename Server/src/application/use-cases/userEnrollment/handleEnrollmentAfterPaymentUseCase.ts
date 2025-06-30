@@ -1,7 +1,7 @@
-import { IOrder } from "../../../domain layer/entities/order";
-import { ICourseBundleRepository } from "../../../infrastructure layer/database/repositories/courseBundleRepo";
-import { ICourseRepository } from "../../../infrastructure layer/database/repositories/courseRepo";
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
+import { IOrder } from "../../../domain/entities/order";
+import { ICourseBundleRepository } from "../../../infrastructure/database/repositories/courseBundleRepo";
+import { ICourseRepository } from "../../../infrastructure/database/repositories/courseRepo";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
 import { EnrollUserUsecase } from "./enrollUserUseCase";
 import { PermanentBundleEnrollmentUseCase } from "./permanentBundleUseCase";
 import { TimeLimitedBundleEnrollmentUseCase } from "./timeLimitedBundleEnrollmentUseCase";

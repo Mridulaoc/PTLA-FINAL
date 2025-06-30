@@ -6,7 +6,7 @@ import { UpdateReviewUsecase } from "../../application/use-cases/review/updateRe
 import {
   IReviewRepository,
   ReviewRepository,
-} from "../../infrastructure layer/database/repositories/reviewRepo";
+} from "../../infrastructure/database/repositories/reviewRepo";
 import { ReviewController } from "../controllers/reviewController";
 
 export const reviewControllerFactory = (): ReviewController => {

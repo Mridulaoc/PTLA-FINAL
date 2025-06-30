@@ -1,5 +1,5 @@
-import { IOrder } from "../../../domain layer/entities/order";
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
+import { IOrder } from "../../../domain/entities/order";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
 
 export class FetchUserOrdersUseCase {
   constructor(private userRepository: IUserRepository) {}

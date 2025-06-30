@@ -4,7 +4,7 @@ import { GetUserUseCase } from "../../application/use-cases/profile/getUserUseCa
 import { UpdateUserProfileUseCase } from "../../application/use-cases/profile/updateProfileUseCase";
 import { UploadProfileImageUsease } from "../../application/use-cases/profile/uploadProfileImageUsecase";
 import { ChangePasswordUseCase } from "../../application/use-cases/profile/changePasswordUseCase";
-import { IUser } from "../../domain layer/entities/User";
+import { IUser } from "../../domain/entities/User";
 import { HttpStatus } from "../constants/HttpStatus";
 import { ResponseMessages } from "../constants/ResponseMessages";
 

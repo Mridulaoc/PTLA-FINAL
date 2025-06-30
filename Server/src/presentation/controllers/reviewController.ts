@@ -4,8 +4,8 @@ import { FetchCourseReviewsUseCase } from "../../application/use-cases/review/fe
 import { UpdateReviewUsecase } from "../../application/use-cases/review/updateReviewUseCase";
 import { DeleteReviewUseCase } from "../../application/use-cases/review/deleteReviewUseCase";
 import { GetAllReviewsUseCase } from "../../application/use-cases/review/getAllreviewUseCase";
-import { IUser } from "../../domain layer/entities/User";
-import { ReviewModel } from "../../infrastructure layer/database/models/reviewModel";
+import { IUser } from "../../domain/entities/User";
+import { ReviewModel } from "../../infrastructure/database/models/reviewModel";
 import { ResponseMessages } from "../constants/ResponseMessages";
 import { HttpStatus } from "../constants/HttpStatus";
 

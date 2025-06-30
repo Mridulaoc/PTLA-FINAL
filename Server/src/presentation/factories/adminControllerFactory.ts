@@ -10,27 +10,27 @@ import { ToggleBlockUserUseCase } from "../../application/use-cases/admin/toggle
 import {
   AdminRepository,
   IAdminRepository,
-} from "../../infrastructure layer/database/repositories/adminRepo";
+} from "../../infrastructure/database/repositories/adminRepo";
 import {
   CategoryRepository,
   ICategoryRepository,
-} from "../../infrastructure layer/database/repositories/categoriesRepo";
+} from "../../infrastructure/database/repositories/categoriesRepo";
 import {
   DashboardRepository,
   IDashboardRepository,
-} from "../../infrastructure layer/database/repositories/dashboardRepo";
+} from "../../infrastructure/database/repositories/dashboardRepo";
 import {
   IUserRepository,
   UserRepository,
-} from "../../infrastructure layer/database/repositories/userRepo";
+} from "../../infrastructure/database/repositories/userRepo";
 import {
   BcryptService,
   IBcryptService,
-} from "../../infrastructure layer/services/bcryptService";
+} from "../../infrastructure/services/bcryptService";
 import {
   IJwtService,
   JwtService,
-} from "../../infrastructure layer/services/jwtService";
+} from "../../infrastructure/services/jwtService";
 import { AdminController } from "../controllers/adminController";
 
 export const adminControllerFactory = (): AdminController => {

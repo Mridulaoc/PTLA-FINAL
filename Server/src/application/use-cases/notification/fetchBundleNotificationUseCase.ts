@@ -1,5 +1,5 @@
-import { ICourseBundle } from "../../../domain layer/entities/CourseBundle";
-import { INotificationRepository } from "../../../infrastructure layer/database/repositories/notificationRepo";
+import { ICourseBundle } from "../../../domain/entities/CourseBundle";
+import { INotificationRepository } from "../../../infrastructure/database/repositories/notificationRepo";
 
 export class FetchBundleNotificationUseCase {
   constructor(private notificationRepository: INotificationRepository) {}

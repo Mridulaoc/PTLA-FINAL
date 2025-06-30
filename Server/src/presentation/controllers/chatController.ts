@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
-import { IAdmin } from "../../domain layer/entities/Admin";
+import { IAdmin } from "../../domain/entities/Admin";
 import { GetAdminChatsUseCase } from "../../application/use-cases/chat/getAdminChatUseCase";
 import { GetChatUseCase } from "../../application/use-cases/chat/getChatByIdUseCase";
 import { CreateChatUseCase } from "../../application/use-cases/chat/createChatUseCase";
 import { CreateOrGetChatUseCase } from "../../application/use-cases/chat/createOrGetChatUseCase";
 import { GetAdminIdUseCase } from "../../application/use-cases/chat/getAdminIdUseCase";
 import { GetStudentsChatsUseCase } from "../../application/use-cases/chat/getStudentsChatsUseCase";
-import { IUser } from "../../domain layer/entities/User";
+import { IUser } from "../../domain/entities/User";
 import { HttpStatus } from "../constants/HttpStatus";
 import { ResponseMessages } from "../constants/ResponseMessages";
 

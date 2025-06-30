@@ -1,12 +1,17 @@
+import { notificationNamespace } from "../../app";
+import { CreateNotificationUseCase } from "../../application/use-cases/notification/createNotificationUseCase";
 import { INotification } from "../../domain/entities/Notification";
-import { NotificationRepository } from "../../domain/repositories/notificationRepository";
-import { CreateNotificationUseCase } from "../../domain/usecases/createNotificationUseCase";
-import { BundleModel } from "../database/courseBundleModel";
-import { UserModel } from "../database/userModel";
+import { BundleModel } from "../database/models/courseBundleModel";
+import { UserModel } from "../database/models/userModel";
+import { NotificationRepository } from "../database/repositories/notificationRepo";
+import { NotificationSocketService } from "./socketServices/notificationSocketService";
 
 const notificationRepository = new NotificationRepository();
+const notificationService = new NotificationSocketService();
 const createNotificationUseCase = new CreateNotificationUseCase(
-  notificationRepository
+  notificationRepository,
+  notificationService,
+  notificationNamespace
 );
 
 export const sendBundleExpiryNotifications = async () => {

@@ -1,12 +1,12 @@
 import { Request, Response } from "express";
 import { OAuth2Client } from "google-auth-library";
 import { RegisterUserUseCase } from "../../application/use-cases/user/registerUseCase";
-import { IJwtService } from "../../infrastructure layer/services/jwtService";
-import { IEmailService } from "../../infrastructure layer/services/emailService";
+import { IJwtService } from "../../infrastructure/services/jwtService";
+import { IEmailService } from "../../infrastructure/services/emailService";
 import { VerifyOTPUseCase } from "../../application/use-cases/user/verifyOTPUseCase";
 import { ResendOTPUseCase } from "../../application/use-cases/user/resendOTPUseCase";
 import { LoginUseCase } from "../../application/use-cases/user/loginUseCase";
-import { IGoogleProfile, IUser } from "../../domain layer/entities/User";
+import { IGoogleProfile, IUser } from "../../domain/entities/User";
 import { GoogleAuthUseCase } from "../../application/use-cases/user/googleAuthUseCase";
 import { CheckUserStatusUseCase } from "../../application/use-cases/user/checkUserStatusUseCase";
 import { HttpStatus } from "../constants/HttpStatus";

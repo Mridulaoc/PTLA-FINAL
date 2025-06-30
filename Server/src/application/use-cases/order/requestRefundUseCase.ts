@@ -1,8 +1,8 @@
-import { IUser } from "../../../domain layer/entities/User";
-import { ICourseBundleRepository } from "../../../infrastructure layer/database/repositories/courseBundleRepo";
-import { IOrderRepository } from "../../../infrastructure layer/database/repositories/orderRepo";
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
-import { IPaymentService } from "../../../infrastructure layer/services/razorpayServices";
+import { IUser } from "../../../domain/entities/User";
+import { ICourseBundleRepository } from "../../../infrastructure/database/repositories/courseBundleRepo";
+import { IOrderRepository } from "../../../infrastructure/database/repositories/orderRepo";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
+import { IPaymentService } from "../../../infrastructure/services/razorpayServices";
 
 export class RequestRefundUseCase {
   constructor(

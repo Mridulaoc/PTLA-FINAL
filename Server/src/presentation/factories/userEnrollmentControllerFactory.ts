@@ -5,19 +5,19 @@ import { UpdateLessonProgressUseCase } from "../../application/use-cases/userEnr
 import {
   CertificateRepository,
   ICertificateRepository,
-} from "../../infrastructure layer/database/repositories/certificateRepo";
+} from "../../infrastructure/database/repositories/certificateRepo";
 import {
   CourseRepository,
   ICourseRepository,
-} from "../../infrastructure layer/database/repositories/courseRepo";
+} from "../../infrastructure/database/repositories/courseRepo";
 import {
   ILessonProgressRepository,
   LessonProgressRepository,
-} from "../../infrastructure layer/database/repositories/lessonProgressRepo";
+} from "../../infrastructure/database/repositories/lessonProgressRepo";
 import {
   IUserRepository,
   UserRepository,
-} from "../../infrastructure layer/database/repositories/userRepo";
+} from "../../infrastructure/database/repositories/userRepo";
 import { UserEnrollmentController } from "../controllers/userEnrollmentController";
 
 export const userEnrollmentControllerfactory = (): UserEnrollmentController => {

@@ -1,4 +1,4 @@
-import { IAdminRepository } from "../../../infrastructure layer/database/repositories/adminRepo";
+import { IAdminRepository } from "../../../infrastructure/database/repositories/adminRepo";
 
 export class GetAdminIdUseCase {
   constructor(private adminRepository: IAdminRepository) {}

@@ -1,6 +1,6 @@
-import { IOrderRepository } from "../../../infrastructure layer/database/repositories/orderRepo";
-import { IUser } from "../../../domain layer/entities/User";
-import { IPaymentService } from "../../../infrastructure layer/services/razorpayServices";
+import { IOrderRepository } from "../../../infrastructure/database/repositories/orderRepo";
+import { IUser } from "../../../domain/entities/User";
+import { IPaymentService } from "../../../infrastructure/services/razorpayServices";
 
 export class RetryPaymentUseCase {
   constructor(

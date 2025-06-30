@@ -1,5 +1,5 @@
-import { ILesson } from "../../../domain layer/entities/lesson";
-import { ILessonRepository } from "../../../infrastructure layer/database/repositories/lessonRepo";
+import { ILesson } from "../../../domain/entities/lesson";
+import { ILessonRepository } from "../../../infrastructure/database/repositories/lessonRepo";
 
 export class AddLessonsUseCase {
   constructor(private lessonRepository: ILessonRepository) {}

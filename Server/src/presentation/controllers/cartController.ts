@@ -3,7 +3,7 @@ import { AddToCartUseCase } from "../../application/use-cases/cart/addToCartUseC
 import { RemoveFromCartUseCase } from "../../application/use-cases/cart/removeFromCartUseCase";
 import { FetchFromCartUseCase } from "../../application/use-cases/cart/fetchFromCartUseCase";
 import { GetEnrolledCoursesUseCase } from "../../application/use-cases/cart/getEnrolledCoursesUseCase";
-import { IUser } from "../../domain layer/entities/User";
+import { IUser } from "../../domain/entities/User";
 import { HttpStatus } from "../constants/HttpStatus";
 import { ResponseMessages } from "../constants/ResponseMessages";
 

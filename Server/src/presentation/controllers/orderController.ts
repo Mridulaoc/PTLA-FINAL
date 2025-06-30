@@ -1,5 +1,5 @@
 import { Request, Response } from "express";
-import { IUser } from "../../domain layer/entities/User";
+import { IUser } from "../../domain/entities/User";
 import { CreateOrderUseCase } from "../../application/use-cases/order/createOrderUseCase";
 import { VerifyPaymentUseCase } from "../../application/use-cases/order/verifyPaymentUseCase";
 import { ConfirmPaymentUseCase } from "../../application/use-cases/order/confirmPaymentUseCase";

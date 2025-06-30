@@ -7,7 +7,7 @@ import { UpdateBundleUseCase } from "../../application/use-cases/courseBundle/up
 import {
   CourseBundleRepository,
   ICourseBundleRepository,
-} from "../../infrastructure layer/database/repositories/courseBundleRepo";
+} from "../../infrastructure/database/repositories/courseBundleRepo";
 import { CourseBundleController } from "../controllers/courseBundleController";
 
 export const courseBundleFactory = (): CourseBundleController => {

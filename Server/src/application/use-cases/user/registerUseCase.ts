@@ -1,6 +1,6 @@
-import { IUser } from "../../../domain layer/entities/User";
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
-import { IBcryptService } from "../../../infrastructure layer/services/bcryptService";
+import { IUser } from "../../../domain/entities/User";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
+import { IBcryptService } from "../../../infrastructure/services/bcryptService";
 import { generateOTP } from "../../../shared/utils/generateOtp";
 
 export class RegisterUserUseCase {

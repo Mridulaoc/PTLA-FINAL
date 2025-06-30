@@ -3,11 +3,11 @@ import { NotificationController } from "../controllers/notificationController";
 import {
   INotificationRepository,
   NotificationRepository,
-} from "../../infrastructure layer/database/repositories/notificationRepo";
+} from "../../infrastructure/database/repositories/notificationRepo";
 import {
   INotificationService,
   NotificationSocketService,
-} from "../../infrastructure layer/services/socketServices/notificationSocketService";
+} from "../../infrastructure/services/socketServices/notificationSocketService";
 import { CreateNotificationUseCase } from "../../application/use-cases/notification/createNotificationUseCase";
 import { DeleteNotificationUseCase } from "../../application/use-cases/notification/deleteNotificationUseCase";
 import { FetchALLNotificationUseCase } from "../../application/use-cases/notification/fetchAllNotificationsUseCase";

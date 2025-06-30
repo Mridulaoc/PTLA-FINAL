@@ -1,6 +1,6 @@
-import { IGoogleProfile, IUser } from "../../../domain layer/entities/User";
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
-import { IJwtService } from "../../../infrastructure layer/services/jwtService";
+import { IGoogleProfile, IUser } from "../../../domain/entities/User";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
+import { IJwtService } from "../../../infrastructure/services/jwtService";
 
 export interface IAuthenticatedUser {
   user: IUser;

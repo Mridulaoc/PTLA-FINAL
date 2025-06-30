@@ -1,5 +1,5 @@
-import { ILessonProgress } from "../../../domain layer/entities/LessonProgress";
-import { ILessonProgressRepository } from "../../../infrastructure layer/database/repositories/lessonProgressRepo";
+import { ILessonProgress } from "../../../domain/entities/LessonProgress";
+import { ILessonProgressRepository } from "../../../infrastructure/database/repositories/lessonProgressRepo";
 
 export class UpdateLessonProgressUseCase {
   constructor(private lessonProgressRepository: ILessonProgressRepository) {}

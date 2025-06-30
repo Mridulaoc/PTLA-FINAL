@@ -1,5 +1,5 @@
-import { ICourse } from "../../../domain layer/entities/Course";
-import { INotificationRepository } from "../../../infrastructure layer/database/repositories/notificationRepo";
+import { ICourse } from "../../../domain/entities/Course";
+import { INotificationRepository } from "../../../infrastructure/database/repositories/notificationRepo";
 
 export class FetchNotificationCourseUsecase {
   constructor(private notificationRepository: INotificationRepository) {}

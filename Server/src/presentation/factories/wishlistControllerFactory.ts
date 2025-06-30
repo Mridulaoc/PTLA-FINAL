@@ -4,7 +4,7 @@ import { RemoveFromWishlistUsecase } from "../../application/use-cases/wishlist/
 import {
   IUserRepository,
   UserRepository,
-} from "../../infrastructure layer/database/repositories/userRepo";
+} from "../../infrastructure/database/repositories/userRepo";
 import { WishlistController } from "../controllers/wishlistController";
 
 export const wishlistControllerFactory = (): WishlistController => {

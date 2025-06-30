@@ -8,17 +8,17 @@ import { ChatController } from "../controllers/chatController";
 import {
   ChatRepository,
   IChatRepository,
-} from "../../infrastructure layer/database/repositories/chatRepo";
+} from "../../infrastructure/database/repositories/chatRepo";
 import {
   ChatSocketService,
   IChatSocketService,
-} from "../../infrastructure layer/services/socketServices/chatSocketService";
+} from "../../infrastructure/services/socketServices/chatSocketService";
 import { Namespace } from "socket.io";
-import { ActiveUser } from "../../domain layer/entities/ActiveUser";
+import { ActiveUser } from "../../domain/entities/ActiveUser";
 import {
   AdminRepository,
   IAdminRepository,
-} from "../../infrastructure layer/database/repositories/adminRepo";
+} from "../../infrastructure/database/repositories/adminRepo";
 
 export const chatControllerFactory = (
   chatNamespace: Namespace,

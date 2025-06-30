@@ -5,7 +5,7 @@ import { UpdateCouponUseCase } from "../../application/use-cases/coupon/updateCo
 import { DeactivateCouponUseCase } from "../../application/use-cases/coupon/deactivateCouponUseCase";
 import { ValidateCouponUseCase } from "../../application/use-cases/coupon/validateCouponUsecase";
 import { CreateCouponUseCase } from "../../application/use-cases/coupon/createCouponUseCase";
-import { IUser } from "../../domain layer/entities/User";
+import { IUser } from "../../domain/entities/User";
 import { HttpStatus } from "../constants/HttpStatus";
 import { ResponseMessages } from "../constants/ResponseMessages";
 

@@ -1,5 +1,5 @@
-import { IClass } from "../../../domain layer/entities/Class";
-import { IClassRepository } from "../../../infrastructure layer/database/repositories/classRepo";
+import { IClass } from "../../../domain/entities/Class";
+import { IClassRepository } from "../../../infrastructure/database/repositories/classRepo";
 
 export class FetchClassUseCase {
   constructor(private classRepository: IClassRepository) {}

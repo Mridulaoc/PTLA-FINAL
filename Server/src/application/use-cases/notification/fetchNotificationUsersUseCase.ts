@@ -1,5 +1,5 @@
-import { IUser } from "../../../domain layer/entities/User";
-import { INotificationRepository } from "../../../infrastructure layer/database/repositories/notificationRepo";
+import { IUser } from "../../../domain/entities/User";
+import { INotificationRepository } from "../../../infrastructure/database/repositories/notificationRepo";
 
 export class FetchNotificationUsersUseCase {
   constructor(private notificationRepository: INotificationRepository) {}

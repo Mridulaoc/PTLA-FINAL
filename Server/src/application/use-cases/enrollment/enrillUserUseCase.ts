@@ -1,7 +1,7 @@
-import { IUser } from "../../../domain layer/entities/User";
-import { IAdminRepository } from "../../../infrastructure layer/database/repositories/adminRepo";
-import { ICourseRepository } from "../../../infrastructure layer/database/repositories/courseRepo";
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
+import { IUser } from "../../../domain/entities/User";
+import { IAdminRepository } from "../../../infrastructure/database/repositories/adminRepo";
+import { ICourseRepository } from "../../../infrastructure/database/repositories/courseRepo";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
 
 export class EnrollUserUsecase {
   constructor(

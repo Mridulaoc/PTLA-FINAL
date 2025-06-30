@@ -1,4 +1,4 @@
-import { ICourseBundleRepository } from "../../../infrastructure layer/database/repositories/courseBundleRepo";
+import { ICourseBundleRepository } from "../../../infrastructure/database/repositories/courseBundleRepo";
 
 export class DeleteBundleUseCase {
   constructor(private courseBundleRepository: ICourseBundleRepository) {}

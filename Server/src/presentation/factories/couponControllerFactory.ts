@@ -7,7 +7,7 @@ import { ValidateCouponUseCase } from "../../application/use-cases/coupon/valida
 import {
   CouponRepository,
   ICouponRepository,
-} from "../../infrastructure layer/database/repositories/couponRepo";
+} from "../../infrastructure/database/repositories/couponRepo";
 import { CouponController } from "../controllers/couponControllers";
 
 export const couponControllerFactory = (): CouponController => {

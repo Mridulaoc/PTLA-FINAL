@@ -1,5 +1,5 @@
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
-import { IUploadService } from "../../../infrastructure layer/services/cloudinaryService";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
+import { IUploadService } from "../../../infrastructure/services/cloudinaryService";
 
 export class UploadProfileImageUsease {
   constructor(

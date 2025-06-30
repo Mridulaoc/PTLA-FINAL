@@ -1,7 +1,7 @@
 import { Namespace } from "socket.io";
-import { INotification } from "../../../domain layer/entities/Notification";
-import { INotificationRepository } from "../../../infrastructure layer/database/repositories/notificationRepo";
-import { INotificationService } from "../../../infrastructure layer/services/socketServices/notificationSocketService";
+import { INotification } from "../../../domain/entities/Notification";
+import { INotificationRepository } from "../../../infrastructure/database/repositories/notificationRepo";
+import { INotificationService } from "../../../infrastructure/services/socketServices/notificationSocketService";
 
 export class CreateNotificationUseCase {
   constructor(

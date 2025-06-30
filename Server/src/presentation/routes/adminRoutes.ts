@@ -1,7 +1,7 @@
 import express from "express";
-import { adminMiddleware } from "../../infrastructure layer/middleware/adminMiddleware";
-import upload from "../../infrastructure layer/middleware/upload";
-import uploadVideo from "../../infrastructure layer/middleware/uploadVideo";
+import { adminMiddleware } from "../../infrastructure/middleware/adminMiddleware";
+import upload from "../../infrastructure/middleware/upload";
+import uploadVideo from "../../infrastructure/middleware/uploadVideo";
 import { adminControllerFactory } from "../factories/adminControllerFactory";
 import { courseControllerFactory } from "../factories/courseControllerFactory";
 import { lessoControllerFactory } from "../factories/lessonControllerFactory";

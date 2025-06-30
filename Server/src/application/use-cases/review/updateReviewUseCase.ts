@@ -1,5 +1,5 @@
-import { IReview } from "../../../domain layer/entities/Review";
-import { IReviewRepository } from "../../../infrastructure layer/database/repositories/reviewRepo";
+import { IReview } from "../../../domain/entities/Review";
+import { IReviewRepository } from "../../../infrastructure/database/repositories/reviewRepo";
 
 export class UpdateReviewUsecase {
   constructor(private reviewRepository: IReviewRepository) {}

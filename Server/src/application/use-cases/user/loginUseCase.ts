@@ -1,6 +1,6 @@
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
-import { IBcryptService } from "../../../infrastructure layer/services/bcryptService";
-import { IJwtService } from "../../../infrastructure layer/services/jwtService";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
+import { IBcryptService } from "../../../infrastructure/services/bcryptService";
+import { IJwtService } from "../../../infrastructure/services/jwtService";
 
 export class LoginUseCase {
   constructor(

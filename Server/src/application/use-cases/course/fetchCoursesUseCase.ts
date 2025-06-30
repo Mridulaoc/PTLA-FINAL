@@ -1,5 +1,5 @@
-import { ICourse } from "../../../domain layer/entities/Course";
-import { ICourseRepository } from "../../../infrastructure layer/database/repositories/courseRepo";
+import { ICourse } from "../../../domain/entities/Course";
+import { ICourseRepository } from "../../../infrastructure/database/repositories/courseRepo";
 
 export class FetchCoursesUseCase {
   constructor(private courseRepository: ICourseRepository) {}

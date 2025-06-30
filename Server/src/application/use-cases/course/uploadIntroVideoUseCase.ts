@@ -1,4 +1,4 @@
-import { IUploadService } from "../../../infrastructure layer/services/cloudinaryService";
+import { IUploadService } from "../../../infrastructure/services/cloudinaryService";
 
 export class UploadIntroVideoUsecase {
   constructor(private videoUploadService: IUploadService) {}

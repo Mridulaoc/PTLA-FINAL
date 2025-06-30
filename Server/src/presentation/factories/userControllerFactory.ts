@@ -9,19 +9,19 @@ import { VerifyOTPUseCase } from "../../application/use-cases/user/verifyOTPUseC
 import {
   IUserRepository,
   UserRepository,
-} from "../../infrastructure layer/database/repositories/userRepo";
+} from "../../infrastructure/database/repositories/userRepo";
 import {
   BcryptService,
   IBcryptService,
-} from "../../infrastructure layer/services/bcryptService";
+} from "../../infrastructure/services/bcryptService";
 import {
   EmailService,
   IEmailService,
-} from "../../infrastructure layer/services/emailService";
+} from "../../infrastructure/services/emailService";
 import {
   IJwtService,
   JwtService,
-} from "../../infrastructure layer/services/jwtService";
+} from "../../infrastructure/services/jwtService";
 import { UserController } from "../controllers/userController";
 
 export const userControllerFactory = (): UserController => {

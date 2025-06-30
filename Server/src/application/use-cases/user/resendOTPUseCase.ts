@@ -1,5 +1,5 @@
-import { IUser } from "../../../domain layer/entities/User";
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
+import { IUser } from "../../../domain/entities/User";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
 import { generateOTP } from "../../../shared/utils/generateOtp";
 
 export class ResendOTPUseCase {

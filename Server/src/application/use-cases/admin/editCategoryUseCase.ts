@@ -1,5 +1,5 @@
-import { ICategory } from "../../../domain layer/entities/Category";
-import { ICategoryRepository } from "../../../infrastructure layer/database/repositories/categoriesRepo";
+import { ICategory } from "../../../domain/entities/Category";
+import { ICategoryRepository } from "../../../infrastructure/database/repositories/categoriesRepo";
 
 export class EditCategoryUseCase {
   constructor(private categoryRepository: ICategoryRepository) {}

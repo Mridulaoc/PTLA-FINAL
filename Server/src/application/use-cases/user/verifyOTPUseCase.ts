@@ -1,4 +1,4 @@
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
 
 export class VerifyOTPUseCase {
   constructor(private userRepository: IUserRepository) {}

@@ -1,5 +1,5 @@
-import { ICourse } from "../../../domain layer/entities/Course";
-import { IAdminRepository } from "../../../infrastructure layer/database/repositories/adminRepo";
+import { ICourse } from "../../../domain/entities/Course";
+import { IAdminRepository } from "../../../infrastructure/database/repositories/adminRepo";
 
 export class GetAllCoursesUseCase {
   constructor(private adminRepository: IAdminRepository) {}

@@ -1,5 +1,5 @@
-import { Class, IClass } from "../../../domain layer/entities/Class";
-import { IClassRepository } from "../../../infrastructure layer/database/repositories/classRepo";
+import { Class, IClass } from "../../../domain/entities/Class";
+import { IClassRepository } from "../../../infrastructure/database/repositories/classRepo";
 
 export class ScheduleClassUseCase {
   constructor(private classRepository: IClassRepository) {}

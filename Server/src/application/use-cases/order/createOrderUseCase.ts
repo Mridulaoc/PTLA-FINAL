@@ -1,6 +1,6 @@
-import { ICouponRepository } from "../../../infrastructure layer/database/repositories/couponRepo";
-import { IOrderRepository } from "../../../infrastructure layer/database/repositories/orderRepo";
-import { IPaymentService } from "../../../infrastructure layer/services/razorpayServices";
+import { ICouponRepository } from "../../../infrastructure/database/repositories/couponRepo";
+import { IOrderRepository } from "../../../infrastructure/database/repositories/orderRepo";
+import { IPaymentService } from "../../../infrastructure/services/razorpayServices";
 import { formatBillingAddress } from "../../../shared/utils/formatBillingAddress";
 
 interface ICreateOrderParams {

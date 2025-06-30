@@ -59,3 +59,13 @@ export interface IUser {
   updatedAt?: Date;
   usedCoupons?: IUsedCoupon[];
 }
+
+export interface IGoogleProfile {
+  emails?: Array<{ value: string }>;
+  name?: {
+    givenName?: string;
+    familyName?: string;
+  };
+  id: string;
+  photos?: Array<{ value: string }>;
+}

@@ -3,7 +3,7 @@ import { ScheduleClassUseCase } from "../../application/use-cases/class/schedule
 import {
   ClassRepository,
   IClassRepository,
-} from "../../infrastructure layer/database/repositories/classRepo";
+} from "../../infrastructure/database/repositories/classRepo";
 import { ClassController } from "../controllers/classController";
 
 export const classControllerFactory = (): ClassController => {

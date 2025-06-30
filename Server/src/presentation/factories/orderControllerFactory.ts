@@ -15,31 +15,31 @@ import { TimeLimitedBundleEnrollmentUseCase } from "../../application/use-cases/
 import {
   CouponRepository,
   ICouponRepository,
-} from "../../infrastructure layer/database/repositories/couponRepo";
+} from "../../infrastructure/database/repositories/couponRepo";
 import {
   CourseBundleRepository,
   ICourseBundleRepository,
-} from "../../infrastructure layer/database/repositories/courseBundleRepo";
+} from "../../infrastructure/database/repositories/courseBundleRepo";
 import {
   CourseRepository,
   ICourseRepository,
-} from "../../infrastructure layer/database/repositories/courseRepo";
+} from "../../infrastructure/database/repositories/courseRepo";
 import {
   IOrderRepository,
   OrderRepository,
-} from "../../infrastructure layer/database/repositories/orderRepo";
+} from "../../infrastructure/database/repositories/orderRepo";
 import {
   IUserRepository,
   UserRepository,
-} from "../../infrastructure layer/database/repositories/userRepo";
+} from "../../infrastructure/database/repositories/userRepo";
 import {
   EmailService,
   IEmailService,
-} from "../../infrastructure layer/services/emailService";
+} from "../../infrastructure/services/emailService";
 import {
   IPaymentService,
   RazorpayService,
-} from "../../infrastructure layer/services/razorpayServices";
+} from "../../infrastructure/services/razorpayServices";
 import { OrderController } from "../controllers/orderController";
 
 export const orderContollerFactory = (): OrderController => {

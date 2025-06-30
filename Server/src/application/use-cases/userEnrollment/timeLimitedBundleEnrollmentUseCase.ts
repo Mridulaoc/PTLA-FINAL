@@ -1,5 +1,5 @@
-import { ICourseRepository } from "../../../infrastructure layer/database/repositories/courseRepo";
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
+import { ICourseRepository } from "../../../infrastructure/database/repositories/courseRepo";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
 
 export class TimeLimitedBundleEnrollmentUseCase {
   constructor(

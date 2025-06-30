@@ -1,4 +1,4 @@
-import { ILessonRepository } from "../../../infrastructure layer/database/repositories/lessonRepo";
+import { ILessonRepository } from "../../../infrastructure/database/repositories/lessonRepo";
 
 export class FetchLessonsUseCase {
   constructor(private lessonRepository: ILessonRepository) {}

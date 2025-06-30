@@ -1,8 +1,8 @@
-import { ICouponRepository } from "../../../infrastructure layer/database/repositories/couponRepo";
-import { IOrderRepository } from "../../../infrastructure layer/database/repositories/orderRepo";
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
-import { IEmailService } from "../../../infrastructure layer/services/emailService";
-import { IPaymentService } from "../../../infrastructure layer/services/razorpayServices";
+import { ICouponRepository } from "../../../infrastructure/database/repositories/couponRepo";
+import { IOrderRepository } from "../../../infrastructure/database/repositories/orderRepo";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
+import { IEmailService } from "../../../infrastructure/services/emailService";
+import { IPaymentService } from "../../../infrastructure/services/razorpayServices";
 import { HandleEnrollmentAfterPaymentUseCase } from "../userEnrollment/handleEnrollmentAfterPaymentUseCase";
 
 interface IRazorpayPaymentVerificationBody {

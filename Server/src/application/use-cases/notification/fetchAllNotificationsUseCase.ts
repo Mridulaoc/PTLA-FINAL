@@ -1,5 +1,5 @@
-import { INotification } from "../../../domain layer/entities/Notification";
-import { INotificationRepository } from "../../../infrastructure layer/database/repositories/notificationRepo";
+import { INotification } from "../../../domain/entities/Notification";
+import { INotificationRepository } from "../../../infrastructure/database/repositories/notificationRepo";
 
 export class FetchALLNotificationUseCase {
   constructor(private notificationRepository: INotificationRepository) {}

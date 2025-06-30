@@ -1,5 +1,5 @@
-import { ICourseBundle } from "../../../domain layer/entities/CourseBundle";
-import { ICourseBundleRepository } from "../../../infrastructure layer/database/repositories/courseBundleRepo";
+import { ICourseBundle } from "../../../domain/entities/CourseBundle";
+import { ICourseBundleRepository } from "../../../infrastructure/database/repositories/courseBundleRepo";
 
 export class FetchBundlesUseCase {
   constructor(private courseBundleRepository: ICourseBundleRepository) {}

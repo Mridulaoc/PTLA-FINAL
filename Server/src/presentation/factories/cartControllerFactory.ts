@@ -2,7 +2,7 @@ import { CartController } from "../controllers/cartController";
 import {
   IUserRepository,
   UserRepository,
-} from "../../infrastructure layer/database/repositories/userRepo";
+} from "../../infrastructure/database/repositories/userRepo";
 
 import { AddToCartUseCase } from "../../application/use-cases/cart/addToCartUseCase";
 import { RemoveFromCartUseCase } from "../../application/use-cases/cart/removeFromCartUseCase";

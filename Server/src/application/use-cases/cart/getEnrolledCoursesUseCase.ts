@@ -1,5 +1,5 @@
-import { IEnrolledCourse } from "../../../domain layer/entities/User";
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
+import { IEnrolledCourse } from "../../../domain/entities/User";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
 
 export class GetEnrolledCoursesUseCase {
   constructor(private userRepository: IUserRepository) {}

@@ -1,5 +1,5 @@
-import { IChat } from "../../../domain layer/entities/Chat";
-import { IChatRepository } from "../../../infrastructure layer/database/repositories/chatRepo";
+import { IChat } from "../../../domain/entities/Chat";
+import { IChatRepository } from "../../../infrastructure/database/repositories/chatRepo";
 
 export class GetStudentsChatsUseCase {
   constructor(private chatRepository: IChatRepository) {}

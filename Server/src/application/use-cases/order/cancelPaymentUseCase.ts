@@ -1,5 +1,5 @@
-import { IUser } from "../../../domain layer/entities/User";
-import { IOrderRepository } from "../../../infrastructure layer/database/repositories/orderRepo";
+import { IUser } from "../../../domain/entities/User";
+import { IOrderRepository } from "../../../infrastructure/database/repositories/orderRepo";
 
 export class CancelPaymentUseCase {
   constructor(private orderRepo: IOrderRepository) {}

@@ -1,8 +1,8 @@
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
 import {
   IJwtService,
   JwtPayloadExtended,
-} from "../../../infrastructure layer/services/jwtService";
+} from "../../../infrastructure/services/jwtService";
 
 export class CheckUserStatusUseCase {
   constructor(

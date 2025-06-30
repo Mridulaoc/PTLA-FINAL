@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { AddToWishlistUseCase } from "../../application/use-cases/wishlist/addToWishlistUsecase";
 import { RemoveFromWishlistUsecase } from "../../application/use-cases/wishlist/removeFromWishlistUseCase";
 import { FetchWishlistUseCase } from "../../application/use-cases/wishlist/fetchWishlistUsecase";
-import { IUser } from "../../domain layer/entities/User";
+import { IUser } from "../../domain/entities/User";
 import { HttpStatus } from "../constants/HttpStatus";
 import { ResponseMessages } from "../constants/ResponseMessages";
 

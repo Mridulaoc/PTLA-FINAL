@@ -1,5 +1,5 @@
-import { IOrder } from "../../../domain layer/entities/order";
-import { IOrderRepository } from "../../../infrastructure layer/database/repositories/orderRepo";
+import { IOrder } from "../../../domain/entities/order";
+import { IOrderRepository } from "../../../infrastructure/database/repositories/orderRepo";
 
 export class ProcessRefundUseCase {
   constructor(private orderRepository: IOrderRepository) {}

@@ -10,11 +10,11 @@ import { UploadIntroVideoUsecase } from "../../application/use-cases/course/uplo
 import {
   CourseRepository,
   ICourseRepository,
-} from "../../infrastructure layer/database/repositories/courseRepo";
+} from "../../infrastructure/database/repositories/courseRepo";
 import {
   CloudinaryUploadService,
   IUploadService,
-} from "../../infrastructure layer/services/cloudinaryService";
+} from "../../infrastructure/services/cloudinaryService";
 import { CourseController } from "../controllers/courseController";
 
 export const courseControllerFactory = (): CourseController => {

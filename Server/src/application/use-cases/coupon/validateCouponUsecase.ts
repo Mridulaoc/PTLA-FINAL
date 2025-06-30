@@ -1,5 +1,5 @@
-import { ICoupon } from "../../../domain layer/entities/Coupon";
-import { ICouponRepository } from "../../../infrastructure layer/database/repositories/couponRepo";
+import { ICoupon } from "../../../domain/entities/Coupon";
+import { ICouponRepository } from "../../../infrastructure/database/repositories/couponRepo";
 
 export class ValidateCouponUseCase {
   constructor(private couponReopsitory: ICouponRepository) {}

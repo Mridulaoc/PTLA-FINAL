@@ -1,5 +1,5 @@
-import { IUser } from "../../../domain layer/entities/User";
-import { IAdminRepository } from "../../../infrastructure layer/database/repositories/adminRepo";
+import { IUser } from "../../../domain/entities/User";
+import { IAdminRepository } from "../../../infrastructure/database/repositories/adminRepo";
 
 export class FetchUsersUseCase {
   constructor(private adminRepository: IAdminRepository) {}

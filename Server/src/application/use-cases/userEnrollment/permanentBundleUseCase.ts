@@ -1,7 +1,7 @@
-import { IUser } from "../../../domain layer/entities/User";
-import { ICourseBundleRepository } from "../../../infrastructure layer/database/repositories/courseBundleRepo";
-import { ICourseRepository } from "../../../infrastructure layer/database/repositories/courseRepo";
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
+import { IUser } from "../../../domain/entities/User";
+import { ICourseBundleRepository } from "../../../infrastructure/database/repositories/courseBundleRepo";
+import { ICourseRepository } from "../../../infrastructure/database/repositories/courseRepo";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
 
 export class PermanentBundleEnrollmentUseCase {
   constructor(

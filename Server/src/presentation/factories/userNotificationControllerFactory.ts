@@ -5,7 +5,7 @@ import { MarkNotificationAsReadUseCase } from "../../application/use-cases/userN
 import {
   INotificationRepository,
   NotificationRepository,
-} from "../../infrastructure layer/database/repositories/notificationRepo";
+} from "../../infrastructure/database/repositories/notificationRepo";
 import { UserNotificationController } from "../controllers/userNotificationController";
 
 export const userNotificationControllerFactory =

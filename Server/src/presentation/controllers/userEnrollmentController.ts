@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import { GetEnrollmentStatusUseCase } from "../../application/use-cases/userEnrollment/getEnrollmentStatusUseCase";
-import { IUser } from "../../domain layer/entities/User";
+import { IUser } from "../../domain/entities/User";
 import { ResponseMessages } from "../constants/ResponseMessages";
 import { HttpStatus } from "../constants/HttpStatus";
 import { UpdateLessonProgressUseCase } from "../../application/use-cases/userEnrollment/updateLessonProgressUseCase";

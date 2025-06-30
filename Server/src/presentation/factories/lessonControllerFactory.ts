@@ -5,7 +5,7 @@ import { UpdateLessonUseCase } from "../../application/use-cases/lesson/updateLe
 import {
   ILessonRepository,
   LessonRepository,
-} from "../../infrastructure layer/database/repositories/lessonRepo";
+} from "../../infrastructure/database/repositories/lessonRepo";
 import { LessonController } from "../controllers/lessonController";
 
 export const lessoControllerFactory = (): LessonController => {

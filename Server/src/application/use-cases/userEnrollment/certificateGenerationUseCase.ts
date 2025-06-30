@@ -1,6 +1,6 @@
-import { ICertificate } from "../../../domain layer/entities/Certificate";
-import { ICertificateRepository } from "../../../infrastructure layer/database/repositories/certificateRepo";
-import { ICourseRepository } from "../../../infrastructure layer/database/repositories/courseRepo";
+import { ICertificate } from "../../../domain/entities/Certificate";
+import { ICertificateRepository } from "../../../infrastructure/database/repositories/certificateRepo";
+import { ICourseRepository } from "../../../infrastructure/database/repositories/courseRepo";
 import { generateCertificateNumber } from "../../../shared/utils/generateCertificateNo";
 
 export class CertificateCreationUseCase {

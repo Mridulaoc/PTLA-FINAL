@@ -5,15 +5,15 @@ import { UploadProfileImageUsease } from "../../application/use-cases/profile/up
 import {
   IUserRepository,
   UserRepository,
-} from "../../infrastructure layer/database/repositories/userRepo";
+} from "../../infrastructure/database/repositories/userRepo";
 import {
   BcryptService,
   IBcryptService,
-} from "../../infrastructure layer/services/bcryptService";
+} from "../../infrastructure/services/bcryptService";
 import {
   CloudinaryUploadService,
   IUploadService,
-} from "../../infrastructure layer/services/cloudinaryService";
+} from "../../infrastructure/services/cloudinaryService";
 import { ProfileController } from "../controllers/profileController";
 
 export const profileControllerFactory = (): ProfileController => {

@@ -1,4 +1,4 @@
-import { IReviewRepository } from "../../../infrastructure layer/database/repositories/reviewRepo";
+import { IReviewRepository } from "../../../infrastructure/database/repositories/reviewRepo";
 
 export class DeleteReviewUseCase {
   constructor(private reviewRepository: IReviewRepository) {}

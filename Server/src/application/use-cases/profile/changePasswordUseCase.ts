@@ -1,5 +1,5 @@
-import { IUserRepository } from "../../../infrastructure layer/database/repositories/userRepo";
-import { IBcryptService } from "../../../infrastructure layer/services/bcryptService";
+import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
+import { IBcryptService } from "../../../infrastructure/services/bcryptService";
 
 export interface IChangePasswordInputs {
   userId: string;

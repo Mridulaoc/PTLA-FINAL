@@ -1,4 +1,4 @@
-import { INotificationRepository } from "../../../infrastructure layer/database/repositories/notificationRepo";
+import { INotificationRepository } from "../../../infrastructure/database/repositories/notificationRepo";
 
 export class FetchTargetUsersUseCase {
   constructor(private notificationRepository: INotificationRepository) {}

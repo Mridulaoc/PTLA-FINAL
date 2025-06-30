@@ -1,4 +1,4 @@
-import { ICourseRepository } from "../../../infrastructure layer/database/repositories/courseRepo";
+import { ICourseRepository } from "../../../infrastructure/database/repositories/courseRepo";
 
 export class DeleteCourseUsecase {
   constructor(private courseRepository: ICourseRepository) {}

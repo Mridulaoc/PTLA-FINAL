@@ -1,8 +1,8 @@
 import { Namespace } from "socket.io";
-import { ActiveUser } from "../../../domain layer/entities/ActiveUser";
-import { IChat } from "../../../domain layer/entities/Chat";
-import { IChatRepository } from "../../../infrastructure layer/database/repositories/chatRepo";
-import { IChatSocketService } from "../../../infrastructure layer/services/socketServices/chatSocketService";
+import { ActiveUser } from "../../../domain/entities/ActiveUser";
+import { IChat } from "../../../domain/entities/Chat";
+import { IChatRepository } from "../../../infrastructure/database/repositories/chatRepo";
+import { IChatSocketService } from "../../../infrastructure/services/socketServices/chatSocketService";
 
 export class CreateOrGetChatUseCase {
   constructor(

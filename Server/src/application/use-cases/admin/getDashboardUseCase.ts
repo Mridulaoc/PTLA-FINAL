@@ -1,5 +1,5 @@
-import { IDashboardStats } from "../../../domain layer/entities/dashboard";
-import { IDashboardRepository } from "../../../infrastructure layer/database/repositories/dashboardRepo";
+import { IDashboardStats } from "../../../domain/entities/dashboard";
+import { IDashboardRepository } from "../../../infrastructure/database/repositories/dashboardRepo";
 
 export class GetDashboardUseCase {
   constructor(private dashboardRepository: IDashboardRepository) {}

@@ -4,15 +4,15 @@ import { GetUserSuggestionsUsecase } from "../../application/use-cases/enrollmen
 import {
   AdminRepository,
   IAdminRepository,
-} from "../../infrastructure layer/database/repositories/adminRepo";
+} from "../../infrastructure/database/repositories/adminRepo";
 import {
   CourseRepository,
   ICourseRepository,
-} from "../../infrastructure layer/database/repositories/courseRepo";
+} from "../../infrastructure/database/repositories/courseRepo";
 import {
   IUserRepository,
   UserRepository,
-} from "../../infrastructure layer/database/repositories/userRepo";
+} from "../../infrastructure/database/repositories/userRepo";
 import { EnrollmentController } from "../controllers/enrollmentController";
 
 export const enrollmentControllerFactory = (): EnrollmentController => {

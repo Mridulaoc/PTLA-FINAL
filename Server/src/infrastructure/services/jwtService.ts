@@ -1,25 +1,30 @@
-import jwt from "jsonwebtoken";
-import { IUser } from "../../domain/entities/User";
+import jwt, { JwtPayload, SignOptions } from "jsonwebtoken";
 
-export interface JwtPayloadExtended extends jwt.JwtPayload {
-  userId: string;
+export interface JwtPayloadExtended extends JwtPayload {
+  userId?: string;
+  adminId?: string;
   email: string;
 }
 
-const SECRET_KEY = process.env.JWT_SECRET_KEY || "your_secret_key";
+export interface IJwtService {
+  generateToken(payload: Partial<JwtPayloadExtended>): string;
+  verifyToken(token: string): JwtPayloadExtended;
+}
 
-// Generate JWT token
-export const generateToken = (user: IUser): string => {
-  return jwt.sign(
-    { userId: user._id, email: user.email, isBlocked: user.isBlocked },
-    SECRET_KEY,
-    {
-      expiresIn: "24h",
-    }
-  );
-};
+const SECRET_KEY: string = process.env.JWT_SECRET_KEY || "your_secret_key";
 
-export const verifyToken = (token: string): jwt.JwtPayload => {
-  const decoded = jwt.verify(token, SECRET_KEY) as JwtPayloadExtended;
-  return decoded;
-};
+export interface JwtPayloadExtended extends JwtPayload {
+  userId?: string;
+  adminId?: string;
+  email: string;
+}
+
+export class JwtService implements IJwtService {
+  generateToken = (payload: Partial<JwtPayloadExtended>): string => {
+    return jwt.sign(payload, SECRET_KEY, { expiresIn: "7d" });
+  };
+
+  verifyToken = (token: string): JwtPayloadExtended => {
+    return jwt.verify(token, SECRET_KEY) as JwtPayloadExtended;
+  };
+}
