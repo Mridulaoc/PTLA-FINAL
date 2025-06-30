@@ -15,7 +15,7 @@ import {
 } from "../../infrastructure layer/database/repositories/userRepo";
 import { EnrollmentController } from "../controllers/enrollmentController";
 
-export const EnrollmentControllerFactory = (): EnrollmentController => {
+export const enrollmentControllerFactory = (): EnrollmentController => {
   const adminRepo: IAdminRepository = new AdminRepository();
   const userRepo: IUserRepository = new UserRepository();
   const courseRepo: ICourseRepository = new CourseRepository();

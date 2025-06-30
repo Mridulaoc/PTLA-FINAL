@@ -3,8 +3,6 @@ import bodyParser from "body-parser";
 import cors, { CorsOptions } from "cors";
 import { connectDatabase } from "./infrastructure/database/connection";
 import dotenv from "dotenv";
-// import userRouter from "./interfaces/https/userRoute";
-// import adminRouter from "../src/interfaces/https/adminRoute";
 dotenv.config();
 import passport from "passport";
 import path from "path";
@@ -15,10 +13,6 @@ import { RoomHandler } from "./infrastructure/services/socketService/roomService
 import { chatHandler } from "./infrastructure/services/socketService/chatHandler";
 import jwt from "jsonwebtoken";
 // import { startExpirationCron } from "./infrastructure/cron/expirationCron";
-import {
-  JwtPayloadExtended,
-  verifyToken,
-} from "./infrastructure/services/jwtService";
 import { socketAuthMiddleware } from "./app/middlewares/socketMiddleware";
 import { SocketAddress } from "net";
 import { notificationHandler } from "./infrastructure/services/socketService/notificationHandler";
@@ -77,7 +71,7 @@ app.all("*", (req, res, next) => {
 });
 const server = http.createServer(app);
 const SECRET_KEY = process.env.JWT_SECRET_KEY || "your_secret_key";
-const activeUsers = new Map();
+export const activeUsers = new Map();
 const io = new Server(server, {
   cors: {
     origin: process.env.CLIENT_URL,
@@ -90,7 +84,7 @@ const io = new Server(server, {
 
 // Define Namespaces
 
-const chatNamespace = io.of("/chat");
+export const chatNamespace = io.of("/chat");
 export const notificationNamespace = io.of("/notification");
 const webRTCNamespace = io.of("/webrtc");
 

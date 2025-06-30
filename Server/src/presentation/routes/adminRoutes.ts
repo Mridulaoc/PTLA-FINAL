@@ -1,53 +1,45 @@
 import express from "express";
-import { AdminRepository } from "../../infrastructure layer/database/repositories/adminRepo";
-import { AdminLoginUseCase } from "../../application/use-cases/admin/adminLoginUseCase";
-import { FetchUsersUseCase } from "../../application/use-cases/admin/fetchAllUsersUseCase";
-import { BcryptService } from "../../infrastructure layer/services/bcryptService";
-import { JwtService } from "../../infrastructure layer/services/jwtService";
-import { ToggleBlockUserUseCase } from "../../application/use-cases/admin/toggleBlockUserUseCase";
-import { UserRepository } from "../../infrastructure layer/database/repositories/userRepo";
-import { FetchCategoriesUseCase } from "../../application/use-cases/admin/fetchCategoriesUseCase";
-import { CategoryRepository } from "../../infrastructure layer/database/repositories/categoriesRepo";
-import { AddCategoryUseCase } from "../../application/use-cases/admin/addCategoryUseCase";
-import { GetCategoryUseCase } from "../../application/use-cases/admin/getCategoryUseCase";
-import { EditCategoryUseCase } from "../../application/use-cases/admin/editCategoryUseCase";
-import { DeleteCategoryUseCase } from "../../application/use-cases/admin/deleteCategoryUseCase";
-import { AdminController } from "../controllers/adminController";
 import { adminMiddleware } from "../../infrastructure layer/middleware/adminMiddleware";
+import upload from "../../infrastructure layer/middleware/upload";
+import uploadVideo from "../../infrastructure layer/middleware/uploadVideo";
+import { adminControllerFactory } from "../factories/adminControllerFactory";
+import { courseControllerFactory } from "../factories/courseControllerFactory";
+import { lessoControllerFactory } from "../factories/lessonControllerFactory";
+import { courseBundleFactory } from "../factories/courseBundleFactory";
+import { enrollmentControllerFactory } from "../factories/enrollmentControllerFactory";
+import { classControllerFactory } from "../factories/classControllerFactory";
+import { notificationControllerFactory } from "../factories/notificationControllerFactory";
+import { activeUsers, chatNamespace, notificationNamespace } from "../../app";
+import { chatControllerFactory } from "../factories/chatControllerFactory";
+import { reviewControllerFactory } from "../factories/reviewControllerFactory";
+import { orderContollerFactory } from "../factories/orderControllerFactory";
+import { couponControllerFactory } from "../factories/couponControllerFactory";
+
+const adminController = adminControllerFactory();
+const courseController = courseControllerFactory();
+const lessonController = lessoControllerFactory();
+const courseBundleController = courseBundleFactory();
+const enrollmentController = enrollmentControllerFactory();
+const classController = classControllerFactory();
+const notificationController = notificationControllerFactory(
+  notificationNamespace
+);
+const chatController = chatControllerFactory(chatNamespace, activeUsers);
+const couponController = couponControllerFactory();
+const reviewController = reviewControllerFactory();
+const orderController = orderContollerFactory();
 
 const adminRouter = express.Router();
 
-const adminRepo = new AdminRepository();
-const userRepo = new UserRepository();
-const categoryRepo = new CategoryRepository();
-const bcryptService = new BcryptService();
-const jwtService = new JwtService();
-
-const adminLoginUseCase = new AdminLoginUseCase(
-  adminRepo,
-  bcryptService,
-  jwtService
-);
-const fetchUserUseCase = new FetchUsersUseCase(adminRepo);
-const toggleBlockUserUseCase = new ToggleBlockUserUseCase(userRepo);
-const fetchCategoriesUseCase = new FetchCategoriesUseCase(categoryRepo);
-const addCategoryUseCase = new AddCategoryUseCase(categoryRepo);
-const getCategoryUseCase = new GetCategoryUseCase(categoryRepo);
-const editCategoryUseCase = new EditCategoryUseCase(categoryRepo);
-const deleteCategoryUseCase = new DeleteCategoryUseCase(categoryRepo);
-
-const adminController = new AdminController(
-  adminLoginUseCase,
-  fetchUserUseCase,
-  toggleBlockUserUseCase,
-  fetchCategoriesUseCase,
-  addCategoryUseCase,
-  getCategoryUseCase,
-  editCategoryUseCase,
-  deleteCategoryUseCase
-);
-
 adminRouter.post("/", adminController.login);
+
+adminRouter.get(
+  "/dashboard/stats",
+  adminMiddleware,
+  adminController.getDashboardStats
+);
+
+// User Management Routes
 adminRouter.get("/users", adminMiddleware, adminController.getAllUsers);
 adminRouter.patch(
   "/users/:userId",
@@ -66,5 +58,169 @@ adminRouter
   .get(adminMiddleware, adminController.getCategory)
   .patch(adminMiddleware, adminController.editCategory)
   .delete(adminMiddleware, adminController.deleteCategory);
+
+// Course Managemnet Router
+adminRouter.post(
+  "/upload-featured-image",
+  adminMiddleware,
+  upload.single("featuredImage"),
+  courseController.uploadFeaturedImage
+);
+adminRouter.post(
+  "/upload-intro-video",
+  adminMiddleware,
+  uploadVideo.single("video"),
+  courseController.uploadIntroVideo
+);
+adminRouter
+  .route("/courses")
+  .get(adminMiddleware, courseController.getAllCourses)
+  .post(adminMiddleware, courseController.addNewCourse);
+adminRouter
+  .route("/courses/:courseId")
+  .get(adminMiddleware, courseController.getCourseDetails)
+  .put(adminMiddleware, courseController.updateCourseDetails)
+  .delete(adminMiddleware, courseController.deleteCourse);
+adminRouter
+  .route("/courses/:courseId/lessons")
+  .get(adminMiddleware, lessonController.getAllLessons)
+  .post(adminMiddleware, lessonController.addLesssons);
+adminRouter
+  .route("/courses/lessons/:lessonId")
+  .put(adminMiddleware, lessonController.updateLesson)
+  .delete(adminMiddleware, lessonController.deleteLesson);
+
+// Course Bundle Management
+adminRouter.get(
+  "/all-courses",
+  adminMiddleware,
+  courseBundleController.fetchAllCourses
+);
+adminRouter.post(
+  "/bundle",
+  adminMiddleware,
+  courseBundleController.addNewBundle
+);
+adminRouter.get(
+  "/bundles",
+  adminMiddleware,
+  courseBundleController.fetchAllBundles
+);
+adminRouter.delete(
+  "/bundles/:bundleId",
+  adminMiddleware,
+  courseBundleController.deleteBundle
+);
+adminRouter.put(
+  "/bundles/:bundleId",
+  adminMiddleware,
+  courseBundleController.updateBundle
+);
+
+// Manual Enrollment Routes
+adminRouter.post(
+  "/enrollment",
+  adminMiddleware,
+  enrollmentController.enrollUser
+);
+adminRouter.get(
+  "/enrollment/users",
+  adminMiddleware,
+  enrollmentController.getUserSuggestions
+);
+adminRouter.get(
+  "/enrollment/courses",
+  adminMiddleware,
+  enrollmentController.getCourses
+);
+
+// Live Class Routes
+
+adminRouter.post(
+  "/schedule-class",
+  adminMiddleware,
+  classController.scheduleClass
+);
+
+// Notification Routes
+adminRouter.get(
+  "/all-notifications",
+  adminMiddleware,
+  notificationController.fetchAllNotifications
+);
+adminRouter.post(
+  "/notification",
+  adminMiddleware,
+  notificationController.createNotification
+);
+adminRouter.delete(
+  "/notifications/:notificationId",
+  adminMiddleware,
+  notificationController.deleteNotification
+);
+
+adminRouter.get(
+  "/notifications/users",
+  adminMiddleware,
+  notificationController.fetchUsersForNotification
+);
+adminRouter.get(
+  "/notifications/courses",
+  adminMiddleware,
+  notificationController.fetchCourseForNotification
+);
+
+adminRouter.get(
+  "/notifications/bundles",
+  adminMiddleware,
+  notificationController.fetchBundleForNotification
+);
+
+adminRouter.get(
+  "/:entityType/:entityId/enrolledUsers",
+  adminMiddleware,
+  notificationController.fetchTargetUsersForNotification
+);
+
+// Chat Routes
+adminRouter.get("/chats", adminMiddleware, chatController.getAdminChats);
+adminRouter.post("/chats/create", adminMiddleware, chatController.createChat);
+adminRouter.get("/chats/:chatId", adminMiddleware, chatController.getChat);
+
+adminRouter.post("/coupon", adminMiddleware, couponController.createCoupon);
+adminRouter.get("/coupon", adminMiddleware, couponController.getCoupons);
+adminRouter.get(
+  "/coupons/:id",
+  adminMiddleware,
+  couponController.getCouponById
+);
+adminRouter.put("/coupons/:id", adminMiddleware, couponController.updateCoupon);
+adminRouter.patch(
+  "/coupons/:id",
+  adminMiddleware,
+  couponController.deactivateCoupon
+);
+
+// Reviews Router
+
+adminRouter.get(
+  "/all-reviews",
+  adminMiddleware,
+  reviewController.getAllReviews
+);
+
+// Order Managemnet Routes
+
+adminRouter.get("/orders", adminMiddleware, orderController.getALLOrders);
+adminRouter.put(
+  "/process-refund",
+  adminMiddleware,
+  orderController.processRefund
+);
+adminRouter.get(
+  "/sales-report",
+  adminMiddleware,
+  orderController.getSalesReport
+);
 
 export default adminRouter;

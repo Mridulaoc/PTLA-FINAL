@@ -1,15 +1,15 @@
 import express from "express";
 
-// import {
-//   addCategory,
-//   deleteCategory,
-//   editCategory,
-//   getAllCategories,
-//   getAllUsers,
-//   getCategory,
-//   login,
-//   toggleBlockUser,
-// } from "../../app/controllers/adminController";
+import {
+  addCategory,
+  deleteCategory,
+  editCategory,
+  getAllCategories,
+  getAllUsers,
+  getCategory,
+  login,
+  toggleBlockUser,
+} from "../../app/controllers/adminController";
 import { adminMiddleware } from "../../app/middlewares/adminMiddleware";
 import {
   addNewCourse,
