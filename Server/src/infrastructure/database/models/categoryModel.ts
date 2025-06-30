@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { ICategory } from "../../domain/entities/Category";
+import { ICategory } from "../../../domain/entities/Category";
 
 const categorySchema = new Schema<ICategory>(
   {

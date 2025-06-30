@@ -9,14 +9,14 @@ import path from "path";
 import morgan from "morgan";
 import { Server, Socket } from "socket.io";
 import http from "http";
-import { chatHandler } from "./infrastructure/services/socketService/chatHandler";
 import { startExpirationCron } from "./infrastructure/services/Cron/expirationCron";
 import { socketAuthMiddleware } from "./infrastructure/middleware/socketMiddleware";
-import { notificationHandler } from "./infrastructure/services/socketService/notificationHandler";
-import { webRTCHandler } from "./infrastructure/services/socketService/webrtcHandler";
-import { startBundleExpiryNotificationCron } from "./infrastructure/cron/bundleExpiryNotificationCron";
+import { startBundleExpiryNotificationCron } from "./infrastructure/services/Cron/bundleExpiryNotificationCron";
 import userRouter from "./presentation/routes/userRoute";
 import adminRouter from "./presentation/routes/adminRoutes";
+import { ChatSocketService } from "./infrastructure/services/socketServices/chatSocketService";
+import { NotificationSocketService } from "./infrastructure/services/socketServices/notificationSocketService";
+import { webRTCSocketService } from "./infrastructure/services/socketServices/webrtcSocketService";
 
 const app: Express = express();
 
@@ -110,7 +110,8 @@ chatNamespace.on("connection", (socket) => {
       activeUsers.get(user.id).lastActive = new Date();
     }
   });
-  chatHandler(socket, chatNamespace, activeUsers);
+  const chatService = new ChatSocketService();
+  chatService.handleChatSocketEvents(socket, chatNamespace, activeUsers);
   socket.on("disconnect", (reason) => {
     clearInterval(heartbeatInterval);
     activeUsers.delete(user.id);
@@ -124,7 +125,11 @@ notificationNamespace.on("connection", (socket) => {
     socket.emit("heartbeat"), 30000;
   });
 
-  notificationHandler(socket, notificationNamespace);
+  const notificationService = new NotificationSocketService();
+  notificationService.handleNotificationSocketEvents(
+    socket,
+    notificationNamespace
+  );
   socket.on("disconnect", (reason) => {
     clearInterval(heartbeatInterval);
   });
@@ -141,7 +146,11 @@ webRTCNamespace.on("connection", (socket) => {
     }
   });
 
-  webRTCHandler(socket, webRTCNamespace, activeUsers);
+  const webrtcService = webRTCSocketService(
+    socket,
+    webRTCNamespace,
+    activeUsers
+  );
 
   socket.on("disconnect", (reason) => {
     clearInterval(heartbeatInterval);

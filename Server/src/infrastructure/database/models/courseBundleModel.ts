@@ -1,5 +1,5 @@
 import mongoose, { model, Schema } from "mongoose";
-import { ICourseBundle } from "../../domain/entities/CourseBundle";
+import { ICourseBundle } from "../../../domain/entities/CourseBundle";
 
 const courseBundleSchema = new Schema<ICourseBundle>(
   {

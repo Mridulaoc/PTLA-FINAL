@@ -1,5 +1,5 @@
 import { Schema, model, Types } from "mongoose";
-import { ILessonProgress } from "../../domain/entities/LessonProgress";
+import { ILessonProgress } from "../../../domain/entities/LessonProgress";
 
 const lessonProgressSchema = new Schema<ILessonProgress>(
   {

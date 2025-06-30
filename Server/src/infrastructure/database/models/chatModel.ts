@@ -1,6 +1,6 @@
 import { model } from "mongoose";
 import { Schema } from "mongoose";
-import { IChat, IMessage } from "../../domain/entities/Chat";
+import { IChat, IMessage } from "../../../domain/entities/Chat";
 
 const messageSchema = new Schema<IMessage>({
   sender: {

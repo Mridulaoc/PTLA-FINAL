@@ -1,6 +1,6 @@
 import { Namespace, Server, Socket } from "socket.io";
-import { ClassRepository } from "../../../domain/repositories/classRepository";
-import { WebRTCHandler } from "../webRTCService";
+import { ClassRepository } from "../../database/repositories/classRepo";
+import { WebRTCHandler } from "../webRTCServices";
 
 const userSocketMap = new Map();
 const socketUserMap = new Map();

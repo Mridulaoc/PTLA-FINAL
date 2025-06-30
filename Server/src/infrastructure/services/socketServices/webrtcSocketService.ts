@@ -23,7 +23,7 @@ interface ActiveUser {
   lastActive: Date;
 }
 
-export const webRTCHandler = (
+export const webRTCSocketService = (
   socket: UserSocket,
   namespace: Namespace,
   activeUsers: Map<string, ActiveUser>

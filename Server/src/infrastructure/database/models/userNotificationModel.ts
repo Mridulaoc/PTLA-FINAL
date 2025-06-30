@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { IUserNotification } from "../../domain/entities/userNotification";
+import { IUserNotification } from "../../../domain/entities/userNotification";
 
 const userNotificationSchema = new Schema<IUserNotification>(
   {

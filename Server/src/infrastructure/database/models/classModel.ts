@@ -1,5 +1,5 @@
 import { model, Schema } from "mongoose";
-import { IClass } from "../../domain/entities/Class";
+import { IClass } from "../../../domain/entities/Class";
 
 const classSchema = new Schema<IClass>(
   {
