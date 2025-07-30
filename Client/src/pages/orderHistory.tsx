@@ -73,11 +73,12 @@ const OrderHistory: React.FC = () => {
   };
 
   const isRefundEligible = (order: IOrder) => {
-    if (order.paymentStatus !== "Payment Successfull") return false;
+    if (order.paymentStatus !== "Payment Successful") return false;
 
     const hasBundleItem = order.items?.some(
       (item) => item.itemType === "Bundle"
     );
+    console.log("Bundle details;", order.items);
     if (!hasBundleItem) return false;
 
     const orderDate = new Date(order.createdAt!);
@@ -327,7 +328,7 @@ const OrderHistory: React.FC = () => {
                       justifyContent="center"
                       alignItems="center"
                     >
-                      {order.paymentStatus === "Payment Successfull" && (
+                      {order.paymentStatus === "Payment Successful" && (
                         <Tooltip title="View Details">
                           <IconButton
                             size="small"
@@ -339,17 +340,18 @@ const OrderHistory: React.FC = () => {
                         </Tooltip>
                       )}
 
-                      {order.paymentStatus === "Payment Failed" && (
-                        <Tooltip title="Retry Payment">
-                          <IconButton
-                            size="small"
-                            color="primary"
-                            onClick={() => handleRetryPayment(order.orderId)}
-                          >
-                            <Replay />
-                          </IconButton>
-                        </Tooltip>
-                      )}
+                      {order.paymentStatus === "Payment Failed" ||
+                        (order.paymentStatus === "Pending" && order.orderId && (
+                          <Tooltip title="Retry Payment">
+                            <IconButton
+                              size="small"
+                              color="primary"
+                              onClick={() => handleRetryPayment(order.orderId)}
+                            >
+                              <Replay />
+                            </IconButton>
+                          </Tooltip>
+                        ))}
                       {isRefundEligible(order) &&
                         order.status !== "Refund Requested" && (
                           <Button

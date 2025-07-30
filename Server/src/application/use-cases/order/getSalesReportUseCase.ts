@@ -25,7 +25,7 @@ export class GetSalesReportUseCase {
       startDate,
       endDate,
       "Completed",
-      "Payment Successfull"
+      "Payment Successful"
     );
 
     const totalRevenue = orders.reduce((sum, order) => sum + order.amount, 0);
