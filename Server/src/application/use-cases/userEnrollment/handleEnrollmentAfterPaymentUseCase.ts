@@ -1,7 +1,5 @@
 import { IOrder } from "../../../domain/entities/order";
 import { ICourseBundleRepository } from "../../../infrastructure/database/repositories/courseBundleRepo";
-import { ICourseRepository } from "../../../infrastructure/database/repositories/courseRepo";
-import { IUserRepository } from "../../../infrastructure/database/repositories/userRepo";
 import { EnrollUserUsecase } from "./enrollUserUseCase";
 import { PermanentBundleEnrollmentUseCase } from "./permanentBundleUseCase";
 import { TimeLimitedBundleEnrollmentUseCase } from "./timeLimitedBundleEnrollmentUseCase";
@@ -29,9 +27,8 @@ export class HandleEnrollmentAfterPaymentUseCase {
       if (itemType === "Bundle") {
         const bundle = await this.bundleRepo.findBundleById(itemId.toString());
         if (!bundle) continue;
-
         const courseIds = bundle.courses.map((course: any) =>
-          course.toString()
+          course._id.toString()
         );
 
         if (bundle.accessType === "limited") {

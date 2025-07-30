@@ -55,6 +55,7 @@ export class OrderController {
         return;
       }
 
+      console.log("creating order");
       const orderId = await this.createOrderUseCase.execute({
         userId: user._id.toString(),
         amount: req.body.amount,
@@ -65,6 +66,8 @@ export class OrderController {
         tax: req.body.tax,
         couponCode: req.body.couponCode,
       });
+
+      console.log("Order created");
 
       res.status(HttpStatus.OK).json({ orderId });
     } catch (error) {
@@ -79,7 +82,9 @@ export class OrderController {
 
   verifyAndSaveOrder = async (req: Request, res: Response): Promise<void> => {
     try {
+      console.log("verifying payment");
       const result = await this.verifyPaymentUseCase.execute(req.body);
+      console.log("Payment verified");
 
       res.status(HttpStatus.OK).json({
         success: result.success,
