@@ -36,7 +36,7 @@ export const initializeNotificationSocket = (
 
   notificationSocket = io(`${API_BASE_URL}/notification`, {
     path: "/socket.io/",
-    transports: ["websocket"],
+    transports: ["websocket", "polling"],
     auth: {
       token,
       userId,
@@ -48,27 +48,28 @@ export const initializeNotificationSocket = (
     reconnectionDelayMax: 5000,
     timeout: 20000,
     autoConnect: true,
-  });
-
-  notificationSocket.on("connect", () => {
-    console.log("Notification socket connected!");
-  });
-
-  notificationSocket.on("connect_error", (error) => {
-    console.error("Notification connection error:", error);
+    forceNew: true,
   });
   setupSocketListeners(notificationSocket);
   return notificationSocket;
 };
 const setupSocketListeners = (socket: Socket) => {
   socket.removeAllListeners();
-
   socket.on("connect", () => {
     connectionAttempts = 0;
+    console.log("Notification socket connected!");
   });
 
   // Handle new notifications
   socket.on("notification:new", (notification) => {
+    console.log("Notiifcation received,", notification);
+    console.log("🆕 NEW NOTIFICATION RECEIVED:", notification);
+    console.log("📋 Notification details:", {
+      title: notification.title,
+      message: notification.message,
+      targetType: notification.targetType,
+      id: notification._id,
+    });
     store.dispatch(addNotification(notification));
   });
 

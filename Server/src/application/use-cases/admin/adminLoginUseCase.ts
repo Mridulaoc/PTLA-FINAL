@@ -28,10 +28,11 @@ export class AdminLoginUseCase {
       if (!isValidPassword) {
         throw new Error("Invalid credentials");
       }
-
-      const token = this.jwtService.generateToken(admin);
-
       const adminId: string = admin._id.toString();
+      const token = this.jwtService.generateToken({
+        adminId,
+        email: admin.email,
+      });
 
       return { message: "Login successful", adminId, token };
     } catch (error: unknown) {

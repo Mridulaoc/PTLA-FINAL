@@ -91,7 +91,9 @@ export class UserController {
   login = async (req: Request, res: Response): Promise<void> => {
     try {
       const { email, password } = req.body;
+      console.log(req.body);
       const result = await this.loginUseCase.execute(email, password);
+      console.log(result, "from controller");
       res.status(HttpStatus.OK).json(result);
     } catch (error: unknown) {
       if (error instanceof Error) {

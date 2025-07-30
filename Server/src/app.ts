@@ -17,6 +17,10 @@ import adminRouter from "./presentation/routes/adminRoutes";
 import { ChatSocketService } from "./infrastructure/services/socketServices/chatSocketService";
 import { NotificationSocketService } from "./infrastructure/services/socketServices/notificationSocketService";
 import { webRTCSocketService } from "./infrastructure/services/socketServices/webrtcSocketService";
+import {
+  activeNotificationUsers,
+  notificationService,
+} from "./infrastructure/services/socketServices/notificationServiceInstance";
 
 const app: Express = express();
 
@@ -80,18 +84,18 @@ const io = new Server(server, {
 });
 
 // Define Namespaces
-
 export const chatNamespace = io.of("/chat");
 export const notificationNamespace = io.of("/notification");
 const webRTCNamespace = io.of("/webrtc");
 
+// socket authentication middleware
 chatNamespace.use(socketAuthMiddleware);
-notificationNamespace.use(socketAuthMiddleware);
 webRTCNamespace.use(socketAuthMiddleware);
+notificationNamespace.use(socketAuthMiddleware);
 
+// chat namespace connection
 chatNamespace.on("connection", (socket) => {
   const user = socket.data.user;
-
   activeUsers.set(user.id, {
     socketId: socket.id,
     userType: user.type,
@@ -118,23 +122,37 @@ chatNamespace.on("connection", (socket) => {
   });
 });
 
+// notification namespace connection
 notificationNamespace.on("connection", (socket) => {
   const user = socket.data.user;
-
-  const heartbeatInterval = setInterval(() => {
-    socket.emit("heartbeat"), 30000;
+  if (!user || !user.id) {
+    socket.disconnect();
+    return;
+  }
+  activeNotificationUsers.set(user.id, socket.id);
+  if (user.type === "admin") {
+    socket.join("admin");
+  } else {
+    socket.join(`user:${user.id}`);
+  }
+  socket.emit("notification:connected", {
+    userId: user.id,
+    userType: user.type,
+    status: "connected",
   });
 
-  const notificationService = new NotificationSocketService();
-  notificationService.handleNotificationSocketEvents(
-    socket,
-    notificationNamespace
-  );
+  const heartbeatInterval = setInterval(() => {
+    socket.emit("heartbeat");
+  }, 30000);
+
+  notificationService.handleNotificationSocketEvents(socket);
   socket.on("disconnect", (reason) => {
+    activeNotificationUsers.delete(user.id);
     clearInterval(heartbeatInterval);
   });
 });
 
+// webrtc namespace connection
 webRTCNamespace.on("connection", (socket) => {
   const heartbeatInterval = setInterval(() => {
     socket.emit("heartbeat");

@@ -17,18 +17,16 @@ import { FetchBundleNotificationUseCase } from "../../application/use-cases/noti
 import { FetchTargetUsersUseCase } from "../../application/use-cases/notification/fetchTargetUsersUseCase";
 
 export const notificationControllerFactory = (
-  notificationNameSpace: Namespace
+  notificationNamespace: Namespace,
+  activeNotificationUsers: Map<string, string>,
+  sharedNotificationService: INotificationService
 ): NotificationController => {
   const notificationRepo: INotificationRepository =
     new NotificationRepository();
 
-  const notificationService: INotificationService =
-    new NotificationSocketService();
-
   const createNotificationUseCase = new CreateNotificationUseCase(
     notificationRepo,
-    notificationService,
-    notificationNameSpace
+    sharedNotificationService
   );
   const deleteNotificationUseCase = new DeleteNotificationUseCase(
     notificationRepo

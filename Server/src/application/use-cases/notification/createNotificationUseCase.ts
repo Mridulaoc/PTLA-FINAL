@@ -1,4 +1,3 @@
-import { Namespace } from "socket.io";
 import { INotification } from "../../../domain/entities/Notification";
 import { INotificationRepository } from "../../../infrastructure/database/repositories/notificationRepo";
 import { INotificationService } from "../../../infrastructure/services/socketServices/notificationSocketService";
@@ -6,9 +5,9 @@ import { INotificationService } from "../../../infrastructure/services/socketSer
 export class CreateNotificationUseCase {
   constructor(
     private notificationRepository: INotificationRepository,
-    private notificationService: INotificationService,
-    private notificationNameSpace: Namespace
+    private notificationService: INotificationService
   ) {}
+
   async execute(
     notificationData: Omit<INotification, "_id">
   ): Promise<INotification> {
@@ -40,26 +39,28 @@ export class CreateNotificationUseCase {
         targetUsers: targetUsers,
         isRead: false,
       };
+
       const savedNotification = await this.notificationRepository.create(
         notification
       );
 
+      // await new Promise((resolve) => setTimeout(resolve, 100));
+
       if (notification.targetType === "all") {
-        this.notificationService.sendNotificationToAllUsers(
-          this.notificationNameSpace,
-          savedNotification
-        );
+        this.notificationService.sendNotificationToAllUsers(savedNotification);
       } else if (targetUsers.length > 0) {
         this.notificationService.sendNotificationToUsers(
-          this.notificationNameSpace,
           targetUsers,
           savedNotification
         );
+      } else {
+        console.warn("No target users found for notification");
       }
 
       return savedNotification;
     } catch (error) {
-      throw new Error(`Failed to create notification: ${error}`);
+      console.error(" Notification creation failed:", error);
+      throw error;
     }
   }
 }

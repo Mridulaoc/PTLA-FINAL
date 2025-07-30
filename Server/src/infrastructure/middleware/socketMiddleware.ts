@@ -43,6 +43,7 @@ export const socketAuthMiddleware = async (
         if (!admin) {
           return next(new Error("Authentication error: Admin not found"));
         }
+
         const user: SocketUser = {
           id: decoded.adminId,
           email: decoded.email,
@@ -56,10 +57,12 @@ export const socketAuthMiddleware = async (
     } catch (error) {
       console.log("Not an admin token");
     }
+
     const decoded = jwtService.verifyToken(token) as JwtPayloadExtended;
     if (!decoded || !decoded.userId) {
       return next(new Error("Authentication error: Invalid token payload"));
     }
+
     const user = await UserModel.findById(decoded.userId)
       .select("firstName lastName email profileImg isVerified isBlocked")
       .lean();
@@ -70,6 +73,7 @@ export const socketAuthMiddleware = async (
     if (user.isBlocked) {
       return next(new Error("Authentication error: User is blocked"));
     }
+
     const socketUser: SocketUser = {
       id: decoded.userId,
       email: decoded.email,
@@ -81,6 +85,7 @@ export const socketAuthMiddleware = async (
     };
 
     socket.data.user = socketUser;
+
     return next();
   } catch (error) {
     console.error("Socket authentication error:", error);

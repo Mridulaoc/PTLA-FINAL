@@ -10,8 +10,8 @@ const notificationRepository = new NotificationRepository();
 const notificationService = new NotificationSocketService();
 const createNotificationUseCase = new CreateNotificationUseCase(
   notificationRepository,
-  notificationService,
-  notificationNamespace
+  notificationService
+  // notificationNamespace
 );
 
 export const sendBundleExpiryNotifications = async () => {

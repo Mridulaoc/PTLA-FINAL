@@ -1,60 +1,58 @@
-import { Namespace, Server, Socket } from "socket.io";
+import { Socket } from "socket.io";
 import { INotification } from "../../../domain/entities/Notification";
+import { notificationNamespace } from "../../../app";
 
 export interface INotificationService {
-  handleNotificationSocketEvents(
-    socket: Socket,
-    namespace: Namespace | Server
-  ): void;
-
-  sendNotificationToUsers(
-    namespace: Namespace | Server,
-    userIds: string[],
-    notification: INotification
-  ): void;
-
-  sendNotificationToAllUsers(
-    namespace: Namespace | Server,
-    notification: INotification
-  ): void;
+  handleNotificationSocketEvents(socket: Socket): void;
+  sendNotificationToUsers(userIds: string[], notification: INotification): void;
+  sendNotificationToAllUsers(notification: INotification): void;
 }
 
 export class NotificationSocketService implements INotificationService {
-  handleNotificationSocketEvents = (
-    socket: Socket,
-    namespace: Namespace | Server
-  ) => {
+  private activeUsers: Map<string, string>;
+
+  constructor(activeUsers?: Map<string, string>) {
+    this.activeUsers = activeUsers ?? new Map();
+  }
+
+  handleNotificationSocketEvents = (socket: Socket) => {
     const user = socket.data.user;
     if (!user) {
+      console.error("No user data found in socket");
       return;
     }
 
-    if (user.type === "admin") {
-      socket.join("admin");
-    } else {
-      socket.join(`user:${user.id}`);
-    }
-
     socket.on("notification:read", async (notificationId: string) => {});
-
     socket.on("notification:read-all", async () => {});
   };
 
   sendNotificationToUsers = (
-    namespace: Namespace | Server,
     userIds: string[],
     notification: INotification
   ) => {
-    if (!userIds || userIds.length === 0) return;
+    if (!userIds || userIds.length === 0) {
+      return;
+    }
     userIds.forEach((userId) => {
-      namespace.to(`user:${userId}`).emit("notification:new", notification);
+      try {
+        console.log(this.activeUsers);
+        const socketId = this.activeUsers.get(userId);
+        if (socketId) {
+          notificationNamespace
+            .to(`user:${userId}`)
+            .emit("notification:new", notification);
+        }
+      } catch (error) {
+        console.error(` Error sending notification to user ${userId}:`, error);
+      }
     });
   };
 
-  sendNotificationToAllUsers = (
-    namespace: Namespace | Server,
-    notification: INotification
-  ) => {
-    namespace.emit("notification:new", notification);
+  sendNotificationToAllUsers = (notification: INotification) => {
+    try {
+      notificationNamespace.emit("notification:new", notification);
+    } catch (error) {
+      console.error(" Error sending notification to all users:", error);
+    }
   };
 }

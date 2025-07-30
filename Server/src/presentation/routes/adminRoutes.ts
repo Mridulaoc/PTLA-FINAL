@@ -10,10 +10,15 @@ import { enrollmentControllerFactory } from "../factories/enrollmentControllerFa
 import { classControllerFactory } from "../factories/classControllerFactory";
 import { notificationControllerFactory } from "../factories/notificationControllerFactory";
 import { activeUsers, chatNamespace, notificationNamespace } from "../../app";
+
 import { chatControllerFactory } from "../factories/chatControllerFactory";
 import { reviewControllerFactory } from "../factories/reviewControllerFactory";
 import { orderContollerFactory } from "../factories/orderControllerFactory";
 import { couponControllerFactory } from "../factories/couponControllerFactory";
+import {
+  activeNotificationUsers,
+  notificationService,
+} from "../../infrastructure/services/socketServices/notificationServiceInstance";
 
 const adminController = adminControllerFactory();
 const courseController = courseControllerFactory();
@@ -21,8 +26,11 @@ const lessonController = lessoControllerFactory();
 const courseBundleController = courseBundleFactory();
 const enrollmentController = enrollmentControllerFactory();
 const classController = classControllerFactory();
+
 const notificationController = notificationControllerFactory(
-  notificationNamespace
+  notificationNamespace,
+  activeNotificationUsers,
+  notificationService
 );
 const chatController = chatControllerFactory(chatNamespace, activeUsers);
 const couponController = couponControllerFactory();

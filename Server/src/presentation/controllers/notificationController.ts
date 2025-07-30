@@ -23,6 +23,7 @@ export class NotificationController {
   createNotification = async (req: Request, res: Response): Promise<void> => {
     try {
       const notificationData = req.body;
+      console.log("Notification data from body", notificationData);
 
       if (
         !notificationData.title ||
@@ -60,6 +61,7 @@ export class NotificationController {
       const notification = await this.createNotificationUseCase.execute(
         notificationData
       );
+
       res
         .status(HttpStatus.OK)
         .json({ message: ResponseMessages.NOTIFICATION_CREATED, notification });
