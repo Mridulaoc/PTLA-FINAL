@@ -1,9 +1,11 @@
 import passport from "passport";
 import { Strategy as GoogleStrategy, Profile } from "passport-google-oauth20";
-import { GoogleAuthUseCase } from "../domain/usecases/googleAuthUseCase";
+import { GoogleAuthUseCase } from "../application/use-cases/user/googleAuthUseCase";
 import { UserRepository } from "../infrastructure/database/repositories/userRepo";
+import { JwtService } from "../infrastructure/services/jwtService";
 
 const userRepository: UserRepository = new UserRepository();
+const jwtService = new JwtService();
 
 passport.use(
   new GoogleStrategy(
@@ -21,10 +23,13 @@ passport.use(
       profile: Profile,
       done: Function
     ) => {
-      const googleAuthUseCase = new GoogleAuthUseCase(userRepository);
+      const googleAuthUseCase = new GoogleAuthUseCase(
+        userRepository,
+        jwtService
+      );
 
       try {
-        const user = await googleAuthUseCase.findOrCreateGoogleUser(profile);
+        const user = await googleAuthUseCase.execute(profile);
         if (!user) {
           return done(null, false, { message: "User not found" });
         }

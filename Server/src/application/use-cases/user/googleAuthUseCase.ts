@@ -37,7 +37,10 @@ export class GoogleAuthUseCase {
         );
       }
       if (user && user.signInMethod === "google") {
-        const token = this.jwtService.generateToken(user);
+        const token = this.jwtService.generateToken({
+          userId: user._id.toString(),
+          email: user.email,
+        });
         return { user, token };
       }
 
@@ -55,7 +58,10 @@ export class GoogleAuthUseCase {
         isBlocked: false,
       });
 
-      const token = this.jwtService.generateToken(newUser);
+      const token = this.jwtService.generateToken({
+        userId: newUser._id.toString(),
+        email: newUser.email,
+      });
 
       return { user: newUser, token };
     } catch (error: unknown) {
