@@ -26,11 +26,13 @@ const EnrolledCourses: React.FC = () => {
     dispatch(fetchEnrolledCourses());
   }, [dispatch]);
 
-  const getButtonText = (progress: number) => {
+  const getButtonText = (progress: number, isActive: boolean) => {
+    if (!isActive) return "Access Expired";
     return progress === 0 ? "Start Learning" : "Continue Learning";
   };
 
-  const getButtonColor = (progress: number) => {
+  const getButtonColor = (progress: number, isActive: boolean) => {
+    if (!isActive) return "inherit";
     return progress === 0 ? "primary" : "secondary";
   };
 
@@ -82,7 +84,7 @@ const EnrolledCourses: React.FC = () => {
       <Grid container spacing={3}>
         {enrolledCourses.map((enrollment) => {
           const daysRemaining = getDaysRemaining(enrollment.expiryDate!);
-
+          const isInactive = !enrollment.isActive;
           return (
             <Grid item xs={12} sm={6} md={4} key={enrollment.courseId._id}>
               <Card
@@ -91,14 +93,17 @@ const EnrolledCourses: React.FC = () => {
                   flexDirection: "column",
                   height: "100%",
                   position: "relative",
+                  opacity: isInactive ? 0.7 : 1,
                 }}
                 elevation={3}
               >
                 {daysRemaining !== null && (
                   <Chip
                     icon={<AccessTimeIcon />}
-                    label={`${daysRemaining} days left`}
-                    color="primary"
+                    label={
+                      isInactive ? "Expired" : `${daysRemaining} days left`
+                    }
+                    color={isInactive ? "error" : "primary"}
                     size="small"
                     sx={{
                       position: "absolute",
@@ -148,10 +153,12 @@ const EnrolledCourses: React.FC = () => {
                   {/* Access type indicator */}
                   <Typography
                     variant="body2"
-                    color="text.secondary"
+                    color={isInactive ? "error" : "text.secondary"}
                     sx={{ mt: 1, fontStyle: "italic" }}
                   >
-                    {daysRemaining !== null
+                    {isInactive
+                      ? "Access expired"
+                      : daysRemaining !== null
                       ? "Time-limited access"
                       : "Lifetime access"}
                   </Typography>
@@ -195,14 +202,22 @@ const EnrolledCourses: React.FC = () => {
                     <Button
                       fullWidth
                       variant="contained"
-                      color={getButtonColor(enrollment.progress)}
-                      href={`/courses/${enrollment.courseId._id}/learn`}
+                      color={getButtonColor(
+                        enrollment.progress,
+                        enrollment.isActive!
+                      )}
+                      href={
+                        enrollment.isActive
+                          ? `/courses/${enrollment.courseId._id}/learn`
+                          : undefined
+                      }
+                      disabled={isInactive}
                       sx={{
                         marginTop: 1,
                         fontWeight: 600,
                       }}
                     >
-                      {getButtonText(enrollment.progress)}
+                      {getButtonText(enrollment.progress, enrollment.isActive!)}
                     </Button>
                   </Box>
                 ) : (
@@ -213,8 +228,16 @@ const EnrolledCourses: React.FC = () => {
                     <Button
                       fullWidth
                       variant="contained"
-                      color={getButtonColor(enrollment.progress)}
-                      href={`/courses/${enrollment.courseId._id}/liveClassDetails`}
+                      color={getButtonColor(
+                        enrollment.progress,
+                        enrollment.isActive!
+                      )}
+                      href={
+                        enrollment.isActive
+                          ? `/courses/${enrollment.courseId._id}/liveClassDetails`
+                          : undefined
+                      }
+                      disabled={isInactive}
                       sx={{
                         marginTop: 1,
                         fontWeight: 600,

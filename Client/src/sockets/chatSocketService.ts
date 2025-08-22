@@ -62,9 +62,6 @@ export const initializeChatSocket = (
     timeout: 20000,
     autoConnect: true,
   });
-  chatSocket.on("connect", () => {
-    console.log("Connected!");
-  });
 
   chatSocket.on("connect_error", (error) => {
     console.error("Connection error:", error);
