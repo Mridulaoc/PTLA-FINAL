@@ -392,6 +392,11 @@ export class UserRepository implements IUserRepository {
           model: "Course",
           select:
             "title description featuredImage durationHours durationMinutes lessons visibility",
+        })
+        .populate({
+          path: "enrolledCourses.bundleId",
+          model: "Bundle",
+          select: "accessType title",
         });
       if (!user) {
         throw new Error("User not found");
@@ -414,6 +419,14 @@ export class UserRepository implements IUserRepository {
         enrolledAt: course.enrolledAt,
         progress: course.progress,
         expiryDate: course.expiryDate,
+        isActive: course.isActive,
+        bundleId: course.bundleId
+          ? {
+              _id: course.bundleId._id.toString(),
+              accessType: course.bundleId.accessType,
+              title: course.bundleId.title,
+            }
+          : null,
       }));
     } catch (error) {
       throw new Error(
@@ -641,6 +654,7 @@ export class UserRepository implements IUserRepository {
         {
           "enrolledCourses.expiryDate": { $lt: now },
           "enrolledCourses.isActive": true,
+          "enrolledCourses.bundleId": { $exists: true },
         },
         {
           $set: { "enrolledCourses.$[expired].isActive": false },

@@ -13,11 +13,24 @@ export interface IWishlistItem {
 }
 
 export interface IEnrolledCourse {
-  courseId: string | object;
+  courseId: {
+    _id: string;
+    title: string;
+    description: string;
+    featuredImage: string;
+    durationHours: number;
+    durationMinutes: number;
+    lessons: string[];
+    visibility: string;
+  };
   enrollmentType: "manual" | "auto";
   enrolledAt: Date;
   progress: number;
-  bundleId?: ObjectId | string | null;
+  bundleId?: {
+    _id: string;
+    accessType: "lifetime" | "limited";
+    title: string;
+  } | null;
   expiryDate?: Date | null;
   isActive?: boolean;
 }
